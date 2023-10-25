@@ -282,7 +282,7 @@ class scheduling {
         System.out.println("Enter details for process " + (i + 1));
         System.out.println("Enter arrival time ");
         int at = sc.nextInt();
-        System.out.println("Enter burst time ");
+        System.out.println("Enter burst time ");        
         int bt = sc.nextInt();
         System.out.println(
             "Enter priority(lesser the priority higher the no)");
