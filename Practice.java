@@ -1,101 +1,83 @@
-class process {
-    int id, at, bt, ct, tat, wt, priority, rt;
-
-    public process(int id, int at, int bt){
-        this.id = id;
-        this.at = at;
-        this.bt = bt;
-        this.rt = bt;
-    }
-
-    public process(int id, int at, int bt, int priority){
-        this.id = id;
-        this.at = at;
-        this.bt = bt;
-        this.priority = priority;
-    }
-}
-
-class fcfs{
-    process parr[];
-
-    public fcfs(process parr[]){
-        this.parr = parr;
-    }
-
-    void execute(){
-        int completiontime = 0;
-        double avgtat = 0;
-        double avgwt = 0;
-
-        System.out.println("ID" + "\t" + "AT" + "\t" + "BT" + "\t" + "CT" + "\t" + "TAT" + "\t" + "WT");
-
-        for(process p : parr){
-            if(completiontime < p.at){
-                completiontime = p.at;
-            }
-             completiontime = completiontime + p.bt;
-
-             p.ct = completiontime;
-             p.tat = p.ct - p.at;
-             p.wt = p.tat - p.bt;
-             avgtat = p.tat + avgtat;
-             avgwt = p.wt + avgwt;
+import java.util.*;
 
 
-        }
-    }
-}
 
-
-class Round_robin{
-    process p[];
-    int tq;
+class sjf{
+    process processes[];
     double avgtat = 0;
     double avgwt = 0;
 
-    public Round_robin(int tq, process p[]){
-        this.p = p;
-        this.tq = tq;
+    public sjf(process processes[]){
+        this.processes = processes;
     }
 
-    public void execute(){
-        int n = p.length;
-        int[] remainingTime = new int[n];
-        
-        for (int i = 0; i < n; i++) {
-            remainingTime[i] = p[i].bt;
-        }
+    void execute(){
+        int n = processes.length;
+        boolean executed[] = new boolean[n];
 
-        int t = 0;
-        while(true){
-            boolean done = true;
+        int completed = 0, time = 0;
 
-            for (int i = 0; i < n; i++) {
-                if(remainingTime[i] > 0){
-                    done = false;
+        while(completed != n){
+            int index = -1;
+            int min = 500;
 
-                    if (remainingTime[i] > tq) {
-                        t+=tq;
-                        remainingTime[i] -= tq;
-                    }else{
-                        t = t + remainingTime[i];
-                        p[i].wt = t - p[i].bt;
-                        remainingTime[i] = 0;
-                        p[i].wt = t;
-                        
-                    }
-                }
+            for(int i = 0; i < n; i++){
+                
             }
-        }
+    }
     }
 }
 
-
-
-
 public class Practice {
+
+    public static void FIFO(int numFrames, List<Integer> pages){
+        Queue<Integer> frameQueue = new LinkedList<>();
+        Set<Integer> frameSet = new HashSet<>();
+
+        int pageFaults = 0;
+
+        for(int page : pages){
+            if (!frameSet.contains(page)) {
+                if (frameQueue.size() == numFrames) {
+                    int removedPage = frameQueue.poll();
+                    frameSet.remove(removedPage);
+                }
+                frameQueue.offer(page);
+                frameSet.add(page);
+
+                pageFaults++;
+                System.out.println("Page Reference: " + page + " | Statue: Miss");
+            } else{
+                System.out.println("Page Reference: " + page + " | Statue: Hit");
+            }
+        }
+
+        System.out.println("Total Page Fault: " + pageFaults);
+    }
+
+
+
+
+
+
+
+
+    
+
     public static void main(String[] args){
-        System.out.println("Scheduling Practical");
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the number of frames: ");
+        int numFrames = sc.nextInt();
+
+        System.out.println("Enter the number of pages: ");
+        int numPages = sc.nextInt();
+
+        System.out.println("Enter the page reference string: ");
+        List<Integer> pages = new ArrayList<>();
+
+        for(int i = 0; i < numPages; i++){
+            pages.add(sc.nextInt());
+        }
     }
 }

@@ -58,5 +58,6 @@ public class OptimalPageReplacement {
 
         int optimalPageFaults = optimalPageReplacement(numFrames, new ArrayList<>(pages));
         System.out.println("Total Page Faults (Optimal): " + optimalPageFaults);
+        scanner.close();
     }
 }
