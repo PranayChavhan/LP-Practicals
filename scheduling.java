@@ -51,17 +51,18 @@ class fcfs {
       avgwt = p.wt + avgwt;
 
       System.out.println(
-          p.id +
-              "\t" +
-              p.at +
-              "\t" +
-              p.bt +
-              "\t" +
-              p.ct +
-              "\t" +
-              p.tat +
-              "\t" +
-              p.wt);
+        p.id +
+        "\t" +
+        p.at +
+        "\t" +
+        p.bt +
+        "\t" +
+        p.ct +
+        "\t" +
+        p.tat +
+        "\t" +
+        p.wt
+      );
     }
     System.out.println("Average turn around time: " + avgtat / parr.length);
     System.out.println();
@@ -95,19 +96,20 @@ class priority {
     }
     System.out.println("--------priority--------");
     System.out.println(
-        "id" +
-            "\t" +
-            "priority" +
-            "\t" +
-            "at" +
-            "\t" +
-            "bt" +
-            "\t" +
-            "ct" +
-            "\t" +
-            "tat" +
-            "\t" +
-            "wt");
+      "id" +
+      "\t" +
+      "priority" +
+      "\t" +
+      "at" +
+      "\t" +
+      "bt" +
+      "\t" +
+      "ct" +
+      "\t" +
+      "tat" +
+      "\t" +
+      "wt"
+    );
 
     for (process p : parr) {
       if (completiontime < p.at) {
@@ -120,19 +122,20 @@ class priority {
       avgtat = avgtat + p.tat;
       avgwt = avgwt + p.wt;
       System.out.println(
-          p.id +
-              "\t" +
-              p.priority +
-              "\t" +
-              p.at +
-              "\t" +
-              p.bt +
-              "\t" +
-              p.ct +
-              "\t" +
-              p.tat +
-              "\t" +
-              p.wt);
+        p.id +
+        "\t" +
+        p.priority +
+        "\t" +
+        p.at +
+        "\t" +
+        p.bt +
+        "\t" +
+        p.ct +
+        "\t" +
+        p.tat +
+        "\t" +
+        p.wt
+      );
     }
     System.out.println("Average turn around time: " + avgtat / parr.length);
     System.out.println("Average waiting time: " + avgwt / parr.length);
@@ -194,7 +197,8 @@ class sjf {
       int wt = tat - p.bt;
 
       System.out.println(
-          p.id + "\t" + p.at + "\t" + p.bt + "\t" + p.ct + "\t" + tat + "\t" + wt);
+        p.id + "\t" + p.at + "\t" + p.bt + "\t" + p.ct + "\t" + tat + "\t" + wt
+      );
     }
     System.out.println("Average turnaround time: " + avgtat / n);
 
@@ -216,10 +220,9 @@ class Round_robin {
   public void execute() {
     int n = p.length;
     int[] remainingTime = new int[n];
-    double avgtat = 0, avgwt = 0;
+    // double avgtat = 0, avgwt = 0;
 
-    for (int i = 0; i < n; i++)
-      remainingTime[i] = p[i].bt;
+    for (int i = 0; i < n; i++) remainingTime[i] = p[i].bt;
 
     int t = 0;
     while (true) {
@@ -244,24 +247,24 @@ class Round_robin {
         }
       }
 
-      if (done == true)
-        break;
+      if (done == true) break;
     }
     System.out.println("--------Round_robin--------");
     System.out.println("PID\tAT\tBT\tCT\tTAT\tWT");
     for (process p : p) {
       System.out.println(
-          p.id +
-              "\t" +
-              p.at +
-              "\t" +
-              p.bt +
-              "\t" +
-              p.ct +
-              "\t" +
-              p.tat +
-              "\t" +
-              p.wt);
+        p.id +
+        "\t" +
+        p.at +
+        "\t" +
+        p.bt +
+        "\t" +
+        p.ct +
+        "\t" +
+        p.tat +
+        "\t" +
+        p.wt
+      );
     }
     System.out.println("Average turn around time: " + avgtat / n);
     System.out.println("Average waiting time: " + avgwt / n);
@@ -282,16 +285,14 @@ class scheduling {
         System.out.println("Enter details for process " + (i + 1));
         System.out.println("Enter arrival time ");
         int at = sc.nextInt();
-        System.out.println("Enter burst time ");        
+        System.out.println("Enter burst time ");
         int bt = sc.nextInt();
-        System.out.println(
-            "Enter priority(lesser the priority higher the no)");
+        System.out.println("Enter priority(lesser the priority higher the no)");
         int priority = sc.nextInt();
         p[i] = new process(i + 1, at, bt);
         p1[i] = new process(i + 1, at, bt, priority);
         p2[i] = new process(i + 1, at, bt);
         p3[i] = new process(i + 1, at, bt);
-
       }
       fcfs f = new fcfs(p);
       f.execute();
@@ -303,7 +304,6 @@ class scheduling {
       int tq = sc.nextInt();
       Round_robin r = new Round_robin(p3, tq);
       r.execute();
-
     }
   }
 }

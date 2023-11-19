@@ -1,0 +1,26 @@
+LABEL       OPCODE      OP1         OP2         |     LC    IC OPCODE   IC OP1      IC OP2      
+------------------------------------------------|-----------------------------------------
+            START       200                     |           (AD,01)                             
+            MOVER       AREG        ='5'        |     200   (IS,04)     (01)        (L,1)       
+            MOVEM       AREG        A           |     201   (IS,05)     (01)        (S,1)       
+LOOP        MOVER       AREG        A           |     202   (IS,04)     (01)        (S,1)       
+            MOVER       CREG        B           |     203   (IS,04)     (03)        (S,3)       
+            ADD         CREG        ='1'        |     204   (IS,01)     (03)        (L,2)       
+            MOVER       AREG        A           |     205   (IS,04)     (01)        (S,1)       
+            MOVER       CREG        B           |     206   (IS,04)     (03)        (S,3)       
+            MOVER       AREG        A           |     207   (IS,04)     (01)        (S,1)       
+            MOVER       CREG        B           |     208   (IS,04)     (03)        (S,3)       
+            MOVER       AREG        A           |     209   (IS,04)     (01)        (S,1)       
+            BC          ANY         NEXT        |     210   (IS,07)     (6)         (S,4)       
+            LTORG                               |           (AD,05)                             
+            MOVER       AREG        A           |     213   (IS,04)     (01)        (S,1)       
+NEXT        SUB         AREG        ='1'        |     214   (IS,02)     (01)        (L,2)       
+            BC          LT          BACK        |     215   (IS,07)     (1)         (S,5)       
+LAST        STOP                                |     216   (IS,00)                             
+            ORIGIN      LOOP+2                  |           (AD,03)     (S,2)+2                 
+            MULT        CREG        B           |     204   (IS,03)     (03)        (S,3)       
+            ORIGIN      LAST+1                  |           (AD,03)     (S,6)+1                 
+A           DS          1                       |     217   (DL,02)     (C,1)                   
+BACK        EQU         LOOP                    |           (AD,04)                             
+B           DS          1                       |     218   (DL,02)     (C,1)                   
+            END                                 |     219   (AD,02)                             
